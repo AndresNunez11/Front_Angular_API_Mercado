@@ -1,7 +1,11 @@
-import { bootstrapApplication } from '@angular/platform-browser';
+import { renderApplication } from '@angular/platform-server';
 import { App } from './app/app';
-import { config } from './app/app.config.server';
+import { appConfig } from './app/app.config.server';
+import { bootstrapApplication } from '@angular/platform-browser';
 
-const bootstrap = () => bootstrapApplication(App, config);
-
-export default bootstrap;
+export function render(url: string, document: string): Promise<string> {
+  return renderApplication(() => bootstrapApplication(App, appConfig), {
+    document,
+    url
+  });
+}

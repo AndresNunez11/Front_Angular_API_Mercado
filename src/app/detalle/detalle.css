@@ -1,0 +1,25 @@
+.imagenes{
+    max-width: 90%;
+    height: 500px;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    text-align: center;
+    display: inline-block;
+    flex-wrap: wrap;
+    border: 2px solid rgb(1, 1, 36);
+    border-radius: 50px;
+    margin: 25px;
+    width: 500px;
+    height: 800px;
+    background-color: snow;
+    display:block-webkit-box;
+}
+h1{
+    text-align: center;
+}

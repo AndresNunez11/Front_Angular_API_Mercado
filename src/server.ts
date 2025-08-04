@@ -6,6 +6,10 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { renderApplication } from '@angular/platform-server';
+import { App } from './app/app';
+// import the providers export from './app/app.config.server'
+import { providers } from './app/app.config.server';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -27,6 +31,16 @@ const angularApp = new AngularNodeAppEngine();
 /**
  * Serve static files from /browser
  */
+
+/**
+ * Bootstraps the Angular application.
+ * This function should return a Promise that resolves with the root Angular component.
+ */
+export function bootstrapApplication() {
+  // Import the root App component and any necessary providers
+  // This is a minimal example; in a real app, you may need to pass providers or options.
+  return Promise.resolve(App);
+}
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
@@ -66,3 +80,12 @@ if (isMainModule(import.meta.url)) {
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
  */
 export const reqHandler = createNodeRequestHandler(app);
+
+export function render(url: string, opts: any) {
+  return renderApplication(() => import('./app/app').then(m => m.bootstrapApplication()), {
+    ...opts,
+    appId: 'mercadotico-libre',
+    url,
+    providers: [...providers]
+  });
+}

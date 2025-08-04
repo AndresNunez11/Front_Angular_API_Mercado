@@ -23,12 +23,7 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -66,6 +61,39 @@
           },
           "defaultConfiguration": "development"
         },
+        "build-ssr": {
+          "builder": "@angular/build:ssr",
+          "options": {
+            "browserEntryPoint": "src/main.ts",
+            "serverEntryPoint": "src/main.server.ts"
+          },
+          "configurations": {
+            "production": {
+              "browserEntryPoint": "src/main.ts",
+              "serverEntryPoint": "src/main.server.ts"
+            },
+            "development": {
+              "browserEntryPoint": "src/main.ts",
+              "serverEntryPoint": "src/main.server.ts"
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@angular/build:ssr-dev-server",
+          "options": {
+            "browserTarget": "mercadotico-libre:build-ssr",
+            "watch": true
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mercadotico-libre:build-ssr:production"
+            },
+            "development": {
+              "browserTarget": "mercadotico-libre:build-ssr:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
         },
@@ -86,5 +114,9 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
+

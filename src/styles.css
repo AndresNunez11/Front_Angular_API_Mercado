@@ -1,1 +1,9 @@
+html{
+    background-color: rgb(7, 7, 61);
+}
+body{
+    background-color:rgb(183, 228, 240);
+     font-family: 'Numans', sans-serif;
+}
 /* You can add global styles to this file, and also import other style files */
+/*background-color: linear-gradient(90deg,rgb(159, 206, 202) 0%,rgb(55, 143, 146) 100%);*/

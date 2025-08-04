@@ -1,0 +1,63 @@
+<!--
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML CS JS</title>
+    <meta name="description" content="página de muestra">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    comentado <link rel="stylesheet" href="style.css">
+
+
+</head>
+</html>
+-->   
+    <h1>Productos:</h1>
+     <div class="container">
+          <div *ngFor="let item of misProductos" class="main">
+                <img class = "imagenes" [src]="item.image" alt="Imagen">
+                <hr>
+                <h3>{{ item.title }}</h3>
+                <h4>USD {{ item.price }}</h4>
+                <button routerLink="/detalle/{{ item.id }}">Detalle</button>
+        </div>
+
+
+
+        <!--@for (item of misProductos; track item.id) --- Se utiliza para hacer un track por el numero de id del JSon-->
+        <!--
+        @for (item of misProductos; track item.index) {
+        <a>Prueba dentro del for </a>
+        <div class="main">
+            <a>Prueba </a>
+            <img class="imagenes" src="./img/Auriculares1.jpg" alt="Imagen">
+            <hr>
+            <div>
+                <h2>{{item.title}}</h2>
+                <H3>{{item.price}}</H3>
+                <button>Detalle</button>
+            </div>
+        </div>
+        }-->
+        <!--
+        <div class="main">
+            <img class="imagenes" src="./img/Auriculares2.jpg" alt="Imagen">
+            <h2>Auriculares Inalambricos SONY4569</h2>
+            <H3>ARS8.000,45</H3>
+            <button>Detalle</button>
+        </div>
+        <div class="main">
+            <img class="imagenes" src="./img/Minicomponente.jpg" alt="Imagen">
+            <h2>Mini Componente SONY0020</h2>
+            <H3>ARS5.200,45</H3>
+            <button>Detalle</button>
+        </div>
+        -->
+    </div>
+
+
+    <!-- <script src="script.js" async defer></script>-->
+
+
